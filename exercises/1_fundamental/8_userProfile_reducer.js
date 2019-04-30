@@ -1,23 +1,41 @@
 class Store {
-    constructor(red, initialState) {
-        this.reducer = red
-        this.state = initialState
-    }
-    dispatch(dispatchedAction) {
-        this.state = this.reducer(this.state, dispatchedAction)
-    }
+   constructor(red, initialState) {
+      this.reducer = red
+      this.state = initialState
+   }
+   dispatch(dispatchedAction) {
+      this.state = this.reducer(this.state, dispatchedAction)
+   }
 }
 
 // Insert your code after this line
+let reducer = function (state, action) {
 
+   if (action.type === "setUsername") {
+      return { ...state, username: action.name }
+   }
+   if (action.type === "setPassword") {
+      return { ...state, password: action.pwd }
+   }
+   if (action.type === "setFirstName") {
+      return { ...state, firstName: action.name }
+   }
+   if (action.type === "setLastName") {
+      return { ...state, lastName: action.name }
+   }
+   if (action.type === "setAge") {
+      return { ...state, age: action.ageInYears }
+   }
+   return state
+}
 // Insert your code before this line 
 
 let store = new Store(reducer, {
-    username: "rob",
-    password: "*&^*DHek!",
-    firstName: "Rabert",
-    lastName: "Dabert",
-    age: 30
+   username: "rob",
+   password: "*&^*DHek!",
+   firstName: "Rabert",
+   lastName: "Dabert",
+   age: 30
 })
 
 
@@ -29,19 +47,19 @@ store.dispatch({ type: "setAge", ageInYears: 31 })
 
 
 if (store.state.username !== "bob") {
-    throw new Error("Wrong username")
+   throw new Error("Wrong username")
 }
 if (store.state.password !== "password123") {
-    throw new Error("Wrong password")
+   throw new Error("Wrong password")
 }
 if (store.state.firstName !== "Robert") {
-    throw new Error("Wrong firstName")
+   throw new Error("Wrong firstName")
 }
 if (store.state.lastName !== "Dobert") {
-    throw new Error("Wrong lastName")
+   throw new Error("Wrong lastName")
 }
 if (store.state.age !== 31) {
-    throw new Error("Wrong Age")
+   throw new Error("Wrong Age")
 }
 
 console.log("Exercise finished")

@@ -1,15 +1,27 @@
 class Store {
-    constructor(red, initialState) {
-        this.reducer = red
-        this.state = initialState
-    }
-    dispatch(dispatchedAction) {
-        this.state = this.reducer(this.state, dispatchedAction)
-    }
+   constructor(red, initialState) {
+      this.reducer = red
+      this.state = initialState
+   }
+   dispatch(dispatchedAction) {
+      this.state = this.reducer(this.state, dispatchedAction)
+   }
 }
 
 // Insert your code after this line
+let reducer = function (state, action) {
+   if (action.type === "subtraction") {
+      return state - action.content
+   }
+   if (action.type === "multiplication") {
+      return state * action.content
+   }
+   if (action.type === "addition") {
+      return state + action.content
+   }
 
+   return state
+}
 // Insert your code before this line
 
 
@@ -23,6 +35,6 @@ store.dispatch({ type: "addition", content: 2 })
 
 
 if (store.state !== 6) {
-    throw new Error("Expecting a state of 6 but ended up with a state of " + store.state)
+   throw new Error("Expecting a state of 6 but ended up with a state of " + store.state)
 }
 console.log("Exercise finished")
