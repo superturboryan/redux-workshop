@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux'
+
 
 class DisplayTodos extends Component {
-  render = () => {
-    return (<div> I need to get implemented </div>)
-  }
+
+   render = () => {
+
+      return (this.props.todoItems.map(item => {
+         return <div>{item}</div>
+      }))
+   }
 }
 
-export default DisplayTodos;
+let mapStateToProps = st => {
+   return {
+      todoItems: st.todoItems,
+      todoInput: st.addTodoInput
+   }
+}
+
+let connectedTodos = connect(mapStateToProps)(DisplayTodos)
+
+export default connectedTodos;
