@@ -28,7 +28,6 @@ let reducer = function (state, action) {
    }
    return state
 }
-// Insert your code before this line 
 
 let store = new Store(reducer, {
    username: "rob",
