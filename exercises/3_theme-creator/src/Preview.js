@@ -9,7 +9,7 @@ class Preview extends Component {
 
       return (
          <div style={this.props.userStyleProp}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin sem et ante luctus sodales. Vivamus mi eros, fringilla et felis vitae, efficitur efficitur justo. Praesent dolor mauris, ultrices vel justo ac, sagittis
+            {this.props.randomTextProp}
          </div>
       );
    }
@@ -17,7 +17,8 @@ class Preview extends Component {
 
 let mapStateToProps = state => {
    return {
-      userStyleProp: state.userStyle
+      userStyleProp: state.userStyle,
+      randomTextProp: state.randomText
    }
 }
 
